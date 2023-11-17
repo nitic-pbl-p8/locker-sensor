@@ -1,21 +1,13 @@
 import RPi.GPIO as GPIO
-import signal
-import sys
 import time
-
-GPIO_ID = 26
+ 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(GPIO_ID, GPIO.OUT)
-
-def exit_handler(signal, frame):
-        print("\nExit")
-        GPIO.cleanup()
-        sys.exit(0)
-
-signal.signal(signal.SIGINT, exit_handler)
-
-while True:
-        GPIO.output(GPIO_ID, True)
-        time.sleep(0.5)
-        GPIO.output(GPIO_ID, False)
-        time.sleep(0.5)
+GPIO.setup(17,GPIO.OUT)
+ 
+for i in range(5):
+    GPIO.output(17, True)
+    time.sleep(3)
+    GPIO.output(17, False)
+    time.sleep(3)
+    
+GPIO.cleanup()
